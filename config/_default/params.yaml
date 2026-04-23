@@ -44,3 +44,5 @@ hugoblox:
       enable: true
   search:
     enable: true
+  privacy:
+    enable: true
