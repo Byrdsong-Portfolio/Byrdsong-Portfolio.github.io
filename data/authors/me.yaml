@@ -3,24 +3,17 @@ slug: "me"
 is_owner: true
 name:
   display: "Isaiah Byrdsong"
-  given: "Alex"
-  family: "Johnson"
+  given: "Isaiah"
+  family: "Byrdsong"
   alternate: ""
   pronunciation: ""
   pronouns: "he/him"
 postnominals:
-  - "M.S.S"
-  - "MIEEE"
+  - "B.S.S"
 status:
   icon: "☕️"
 role: "Security Professional"
-bio: "Alex Johnson is a Senior AI Research Scientist at Meta AI. His research
-
-  has been published in top conferences like NeurIPS and ICML, with over
-
-  10,000 citations. Alex is passionate about pushing the boundaries of AI
-
-  while ensuring ethical development.\n"
+bio: "Isaiah Byrdsong is a Security and Intelligence professional currently pursuing a Master of Security Studies in Intelligence & Analysis and a Graduate Cybersecurity Certificate at Angelo State University. His work spans physical-digital security convergence, identity and access management, and critical infrastructure protection, with hands-on experience securing large-scale manufacturing facilities and corpate workforce, Isaiah is an ISC2 Candidate and ASU Distinguished Scholar driven by a commitment to translating complex security data into clear, actionable intelligence.  "
 affiliations:
   - name: "Meta AI"
     url: "https://ai.meta.com/"
