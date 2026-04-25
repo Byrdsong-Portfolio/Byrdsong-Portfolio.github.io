@@ -7,7 +7,7 @@ hugoblox:
     description: "Analytical Security Professional and Intelligence/Cyber Master’s candidate with a Bachelor’s in Intelligence & Analysis. "
   theme:
     mode: system
-    pack: minimal
+    pack: default
     colors:
       primary: ""
       secondary: ""
