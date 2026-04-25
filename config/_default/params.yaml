@@ -6,11 +6,11 @@ hugoblox:
     tagline: Cyber and Intel Security Professional
     description: "Analytical Security Professional and Intelligence/Cyber Master’s candidate with a Bachelor’s in Intelligence & Analysis. "
   theme:
-    mode: system
+    mode: dark
     pack: default
     colors:
-      primary: "gray"
-      secondary: "blue"
+      primary: ""
+      secondary: ""
       neutral: ""
   typography:
     font: sans
