@@ -59,31 +59,13 @@ experience:
     summary: "Worked on GPT-3 scaling. Co-authored paper on prompt engineering.\n"
 skills:
   - name: "Technical Skills"
-    items:
-      - label: "Python"
-        level: 5
-      - label: "Machine Learning"
-        level: 5
-      - label: "Cloud Computing"
-        level: 4
+    items: []
   - name: "Research & Communication"
     items:
       - label: "Academic Writing"
         level: 5
-      - label: "Conference Presentations"
-        level: 4
-      - label: "Grant Proposals"
-        level: 4
 languages:
   - name: "English"
     level: 5
     label: "Native"
-  - name: "Spanish"
-    level: 4
-    label: "Fluent"
-awards:
-  - title: "Best Paper Award"
-    awarder: "NeurIPS"
-    date: "2022-12-01"
-    summary: "Awarded for groundbreaking work on efficient training of large models."
-    icon: "hero/trophy"
+awards: []

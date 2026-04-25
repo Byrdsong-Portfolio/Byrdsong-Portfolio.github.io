@@ -46,3 +46,6 @@ hugoblox:
     enable: true
   privacy:
     enable: true
+  analytics:
+    google:
+      measurement_id: G-SWH53HZ5WW
