@@ -1,0 +1,6 @@
+/* Hide navbar logo */
+.navbar-brand img,
+.navbar-brand svg,
+.navbar-logo {
+  display: none !important;
+}
