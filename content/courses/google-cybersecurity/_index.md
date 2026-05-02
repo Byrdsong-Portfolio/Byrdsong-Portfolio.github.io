@@ -16,18 +16,10 @@ content_meta:
   difficulty: 'Intermediate'
 
 cover:
-  image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2560"
+  image: "https://images.credly.com/images/50cc91fd-d223-4ef0-a512-ab251ba7e812/image.png"
   position:
     x: 50
     y: 50
-  overlay:
-    enabled: true
-    type: "gradient"
-    opacity: 0.55
-    gradient: "bottom"
-  fade:
-    enabled: true
-    height: "80px"
   icon:
     name: "🔐"
 
