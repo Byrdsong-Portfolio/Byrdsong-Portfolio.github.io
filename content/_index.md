@@ -35,14 +35,14 @@ sections:
         shape: circle # Options: circle (default), square, rounded
   - block: markdown
     content:
-      title: '📚 My Research'
+      title: 'About My Work'
       subtitle: ''
       text: |-
-        Use this area to speak to your mission. I'm a research scientist in the Moonshot team at DeepMind. I blog about machine learning, deep learning, and moonshots.
+        I am a Security and Intelligence professional focused on the intersection of cybersecurity, intelligence analysis, and critical infrastructure protection. My work bridges physical and digital security domains — from identity and access management and cyber defense operations to OSINT research and structured threat assessments.
 
-        I apply a range of qualitative and quantitative methods to comprehensively investigate the role of science and technology in the economy.
+        Currently advancing my expertise through a Master of Security Studies in Intelligence & Analysis and a Graduate Cybersecurity Certificate at Angelo State University, building toward a career in cyber defense, intelligence operations, or critical infrastructure security.
 
-        Please reach out to collaborate 😃
+        Feel free to reach out to connect or collaborate.
     design:
       columns: '1'
   - block: collection

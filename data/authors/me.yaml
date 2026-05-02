@@ -44,28 +44,63 @@ education:
     end: "2027 (expected)"
     summary: "Graduate program advancing expertise in strategic intelligence analysis, threat assessment, and security policy. Paired with a Graduate Cybersecurity Certificate emphasizing information security, cyber threat analysis, and digital defense bridging traditional intelligence tradecraft with modern cybersecurity practice to address evolving threats across physical and digital domains."
 experience:
-  - role: "Senior AI Research Scientist"
-    org: "Meta AI"
-    start: "2020-01-01"
-    summary: "Leading research on multimodal AI systems. Contributed to Llama 2 and other open-source models.\n"
-    button:
-      text: "View portfolio"
-      url: "/"
-      icon: "hero/arrow-down-tray"
-  - role: "AI Research Intern"
-    org: "OpenAI"
-    start: "2019-06-01"
-    end: "2019-12-31"
-    summary: "Worked on GPT-3 scaling. Co-authored paper on prompt engineering.\n"
+  - role: "IT Security Officer"
+    org: "Inter-Con Security"
+    start: "2025-02-01"
+    summary: "Safeguard a large-scale critical infrastructure battery production site by overseeing identity and access management (IAM) across physical and digital domains. Enforce least-privilege access policies, maintain user authentication records, and conduct routine permission audits. Collaborate directly with IT and Cyber Defense teams to align physical security with cybersecurity initiatives, support incident response, and flag anomalous access activity."
+  - role: "Security Officer"
+    org: "Allied Universal"
+    start: "2023-10-01"
+    end: "2025-01-31"
+    summary: "Secured personnel, property, and critical assets at a high-value battery manufacturing facility. Monitored site access, conducted patrols, enforced safety protocols, and maintained detailed incident reports aligned with Allied Universal and client operational policies."
+  - role: "County Commissioner — Future Leaders Program"
+    org: "Clarksville-Montgomery County Regional Planning Commission"
+    start: "2019-08-01"
+    end: "2020-06-30"
+    summary: "Participated in the Mayor's Future Leaders Program, collaborating on county commissioner functions across the Animal Control, Airport, CMCSS School Board, and Budget committees. Developed skills in public policy analysis, interagency coordination, and professional communication."
 skills:
-  - name: "Technical Skills"
-    items: []
-  - name: "Research & Communication"
+  - name: "Cybersecurity & IT"
     items:
-      - label: "Academic Writing"
+      - label: "Identity & Access Management (IAM)"
+        level: 4
+      - label: "Network Security"
+        level: 3
+      - label: "Intrusion Detection"
+        level: 3
+      - label: "Incident Response"
+        level: 4
+      - label: "Security Hardening"
+        level: 3
+      - label: "Compliance & Auditing"
+        level: 4
+  - name: "Intelligence & Analysis"
+    items:
+      - label: "Intelligence Analysis"
         level: 5
+      - label: "OSINT Research"
+        level: 4
+      - label: "Risk Assessment"
+        level: 4
+      - label: "Threat Assessment"
+        level: 4
+      - label: "Structured Reporting"
+        level: 5
+  - name: "Professional"
+    items:
+      - label: "Technical Writing"
+        level: 5
+      - label: "Cross-functional Collaboration"
+        level: 4
 languages:
   - name: "English"
     level: 5
     label: "Native"
-awards: []
+awards:
+  - title: "Networks and Network Security"
+    date: "2026-04-01"
+    awarder: "Google"
+    summary: "Covers network architecture, protocols, and security best practices including firewalls, VPNs, and network hardening techniques."
+  - title: "Manage Security Risks"
+    date: "2026-04-01"
+    awarder: "Google"
+    summary: "Covers security frameworks and controls, SIEM tools, incident response playbooks, and risk management practices aligned with NIST guidelines."
