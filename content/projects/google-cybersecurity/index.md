@@ -21,6 +21,8 @@ As part of Angelo State University's Google Cybersecurity Professional Certifica
 **Portfolio Activity: Conduct a Security Audit**
 *Grade: 100% | Submitted: April 4, 2026*
 
+![Coursera submission: Conduct a Security Audit — 100%](/uploads/cyber-security-audit.jpg)
+
 This portfolio project placed me in the role of a security analyst at Botium Toys, a fictional small business with a growing online presence. The scenario required reviewing the company's scope of assets, existing security goals, and a risk assessment report that flagged an overall risk score of 8 out of 10, with potential fines for non-compliance with U.S. and international regulations.
 
 **What I did:**
@@ -48,6 +50,8 @@ This course covered network architecture fundamentals, intrusion tactics, and ha
 
 *Grade: 100% | Submitted: April 20, 2026*
 
+![Coursera submission: NIST CSF Incident Response — 100%](/uploads/cyber-nist-incident.jpg)
+
 This capstone activity placed me as a cybersecurity analyst at a multimedia company that had just experienced a Denial of Service (DoS) attack via an ICMP flood through an unconfigured firewall. The attack disabled internal network services for two hours. My task was to create a professional incident report structured around the five NIST CSF core functions.
 
 **What I did:**
@@ -66,6 +70,8 @@ Applying the NIST CSF to a live-scenario incident demonstrates real readiness fo
 
 *Grade: 100% | Submitted: April 11, 2026*
 
+![Coursera submission: Analyze Network Layer Communication — 100%](/uploads/cyber-network-layer.jpg)
+
 Analyzed packet-level network logs to identify a DoS attack targeting a travel agency website. Used tcpdump output to trace how UDP and ICMP traffic patterns revealed the attack source and impact. Documented findings in a network traffic analysis report covering normal vs. abnormal traffic behavior and recommended mitigations.
 
 **Skills this reflects:** Network layer analysis, reading tcpdump logs, DoS attack identification, TCP/IP and UDP protocol behavior.
@@ -75,6 +81,8 @@ Analyzed packet-level network logs to identify a DoS attack targeting a travel a
 ### Practice Lab: Analyze Network Attacks
 
 *Grade: 100% | Submitted: April 12, 2026*
+
+![Coursera submission: Analyze Network Attacks — 100%](/uploads/cyber-network-attacks.jpg)
 
 Investigated a simulated SYN flood attack against a web server. Analyzed logs showing a half-open connection queue exhausting the server's resources. Identified the attack type, documented the impact, and proposed countermeasures including firewall rate-limiting and connection timeout policies.
 
@@ -86,6 +94,8 @@ Investigated a simulated SYN flood attack against a web server. Analyzed logs sh
 
 *Grade: 100% | Submitted: April 17, 2026*
 
+![Coursera submission: Apply OS Hardening Techniques — 100%](/uploads/cyber-os-hardening.jpg)
+
 Responded to a brute-force attack scenario where a cook's stolen account was used to access a restaurant's sales database. Investigated how the attack succeeded through weak password policies and a default admin account left active. Documented OS hardening recommendations including password complexity enforcement, multi-factor authentication, account lockout policies, and disabling unused system accounts.
 
 **Skills this reflects:** OS hardening methodology, brute-force attack recognition, account management controls, authentication policy design.
@@ -95,6 +105,8 @@ Responded to a brute-force attack scenario where a cook's stolen account was use
 ### Practice Lab: Analysis of Network Hardening
 
 *Grade: 100% | Submitted: April 17, 2026*
+
+![Coursera submission: Analysis of Network Hardening — 100%](/uploads/cyber-network-hardening.jpg)
 
 Reviewed a post-incident network at a social media organization that had experienced a data breach. Analyzed the existing network architecture and identified missing protections. Recommended a layered hardening strategy including firewall rule updates, multi-factor authentication enforcement, network segmentation, and password policy updates. Evaluated each recommendation's implementation timeline and risk reduction value.
 
