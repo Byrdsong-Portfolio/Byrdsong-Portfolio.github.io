@@ -1,7 +1,7 @@
 ---
 title: 'The Token Paradox: When AI Gets Too Expensive to Replace You'
 date: 2026-05-01
-summary: 'A deep look at the economics of AI token costs versus developer salaries — and why the math that was supposed to make human labor obsolete may instead be staging its comeback.'
+summary: 'A look at the economics of AI token costs versus developer salaries, what the real numbers say, and why the math that was supposed to make human labor obsolete may be doing the opposite.'
 tags:
   - AI
   - Economics
@@ -9,141 +9,102 @@ tags:
   - Labor
   - Machine Learning
 image:
-  caption: 'Cost per engineer-week: human total compensation vs. real-world AI agent token burn, 2023–2027'
+  caption: 'Cost per engineer-week: human total compensation vs. real-world AI agent token burn, 2023 to 2027'
   focal_point: 'Center'
 ---
 
-The pitch was irresistible. Replace a \$150,000-per-year software engineer with a few cents of compute. Let the tokens do the thinking. Fire the humans and watch the margins expand. In 2023 and early 2024, spreadsheets built on this premise looked bulletproof.
+I have been following the AI-replaces-developers conversation since it picked up steam in 2023, mostly because it directly affects the field I am building a career in. The claim was straightforward: token costs are so low that routing work through an LLM API is cheaper than paying a human to do it. On paper, that argument was hard to refute. In practice, 2025 and 2026 have started to complicate it in ways worth examining.
 
-By May 2026, Uber's CTO had burned through his entire annual AI budget before summer. A Stockholm-based engineer told *The New York Times* he was spending more on Claude tokens than his own salary. Morgan Stanley pegged Big Tech's AI capital expenditures at **\$740 billion** in 2026 alone — a 69% jump over 2025 — while study after study struggled to find the productivity gains that were supposed to justify all of it.
-
-The revolution got expensive. And buried in the wreckage is one of the stranger economic stories of this decade: **the potential resurrection of human labor, driven by the very technology that was supposed to make it obsolete.**
+This post walks through the actual cost comparison, where the early numbers went wrong, and what I think the current trajectory means for people in technical roles.
 
 ---
 
-## The Original Math Was Real
+## The Math That Started the Conversation
 
-To be fair, the early numbers were genuinely stunning. At 2023–2024 token prices, a developer could route a well-defined coding task through an LLM API for pennies. One frequently-cited analysis calculated that GPT-4o-mini processed the equivalent token output of a developer's workday for roughly \$0.40 — compared to the ~\$600 a day (salary plus benefits) that a mid-level engineer in the US costs all-in.
+The original numbers were real. At 2023 to 2024 token prices, GPT-4o-mini could process the equivalent token output of a developer's workday for roughly \$0.40. A mid-level US software engineer costs around \$600 per day when you factor in salary, payroll taxes, and benefits. That is a 99.9% cost reduction, at least on paper, and it is why so many companies began treating headcount reduction as a near-term AI strategy.
 
-That is not a rounding error. That is a 99.9% cost reduction, on paper.
+Token prices continued falling through 2024 and into 2025. DeepSeek's release reset the pricing floor. OpenAI cut GPT-5 family rates significantly. Claude 4 landed at \$3 to \$5 per million input tokens, down from \$15 in earlier Opus releases. The assumption building in corporate planning cycles was that inference costs would approach negligible, and the only real engineering challenge remaining was orchestration.
 
-By late 2024 and into 2025, Anthropic, OpenAI, and Google were in a race to the bottom on per-token pricing that looked like it would only continue. DeepSeek's surprise release in early 2025 obliterated the pricing floor. OpenAI slashed the GPT-5 family rates. Claude 4 dropped to \$3–\$5 per million input tokens — down from \$15 in early Opus releases. The consensus in VC circles was that inference would approach free, and the only cost center left would be whatever clever orchestration layer sat on top.
-
-Then reality showed up.
+That assumption did not account for how agents actually consume tokens.
 
 ---
 
-## Where the Math Breaks
+## Where the Single-Token Math Fails
 
-The problem is not the cost of a single token. The problem is how many tokens an agent actually burns to get something useful done.
+The per-token price is not the problem. The problem is the volume of tokens a real agentic workflow burns to complete a non-trivial task.
 
-### Context Is the Hidden Multiplier
+A production AI coding agent does not process a request and return a finished result. It reads relevant files, generates code, runs tests, encounters failures, reads the error output, revises the code, re-reads files it already processed, potentially calls external tools, and loops through this cycle multiple times before surfacing anything reviewable. A task that looks like a 10,000-token job on a whiteboard can consume 700,000 tokens or more in execution. That is before accounting for orchestration overhead, multi-model pipelines, and output token costs.
 
-Modern AI coding agents don't process a task once and return an answer. They loop. They read files, write code, run tests, fail, read error messages, revise, re-read files they've already read, consult docs, fail again, and surface a result. Every step adds tokens to the context window. A task that looks like a 10,000-token job on a whiteboard can turn into a 700,000-token operation in practice — and that's before you factor in agentic orchestration overhead, tool-call wrapping, and multi-model pipelines that route to different LLMs for specialized sub-tasks.
+Retool's engineering team published a cost breakdown of what continuous agent operation looks like in production. A persistent agent running standard working hours can consume 700 million tokens per week. At Claude Sonnet 4.6's current pricing of approximately \$3 per million input tokens, that comes to roughly \$2,100 per agent per week in input tokens alone, before any output costs, infrastructure, or review overhead.
 
-Retool's engineering team published a [detailed breakdown](https://retool.com/blog/cost-of-ai-agents-hourly-pricing-model) of what continuous agent operation actually costs. A persistent agent running through a standard workday can consume 700 million tokens per week. At Claude Sonnet 4.6's current pricing of roughly \$3 per million input tokens, that works out to **\$2,100 per agent per week** — before output tokens, before orchestration, before storage, before the human who has to review whatever it produced.
-
-A mid-level US software engineer costs roughly \$7,500–\$9,000 per week in total compensation (salary, payroll taxes, benefits, equipment). At peak agent token burn, you're looking at **23–28% of that cost**, which still sounds like a win — until you look at what you actually got.
-
-### The Quality and Oversight Problem
-
-The METR study that circulated in mid-2025 was the most rigorous piece of evidence to date on AI's actual effect on developer productivity: across experienced open-source developers, allowing AI tools **increased task completion time by 19%** on average. Developers *believed* AI made them 20% faster. They were wrong by 39 percentage points.
-
-A separate analysis from Faros.ai found that AI coding assistants increased individual developer output without increasing company productivity — the work got faster, but the review burden, rework rate, and coordination overhead absorbed most of the gain. PR review time on AI-heavy teams climbed 91%.
-
-These are not arguments that AI is useless. A subset of developers — roughly the top quintile — genuinely achieved 16–30% productivity improvements. For well-defined, bounded tasks with clear acceptance criteria, AI agents still deliver real cost savings. But the "replace the entire engineering department" scenario requires AI to operate autonomously on complex, ambiguous, multi-dependency work — which is exactly where the token consumption explodes and the output quality degrades.
+A mid-level US software engineer costs \$7,500 to \$9,000 per week in total compensation. At that comparison, an agent at full token burn is running at about 23 to 28 percent of a human engineer's cost. That still sounds like a win, and it might be, depending on the output quality. That is where the second problem comes in.
 
 ---
 
-## The Full Cost Stack Nobody Was Showing Investors
+## What Research Says About Output Quality
 
-The token line item is only the beginning. A production AI agent system in 2026 carries a cost stack that looks something like this:
+The most rigorous study I have seen on this was the METR randomized controlled trial from mid-2025. It measured experienced open-source developers working on real tasks with and without AI tooling. The result was that allowing AI tools increased average task completion time by 19 percent. The same developers estimated AI had made them 20 percent faster. The gap between perception and measured outcome was 39 percentage points.
 
-| Cost Layer | Monthly Estimate (mid-scale) |
+A separate analysis from Faros.ai tracked AI adoption across engineering teams and found that AI coding assistants increased individual output metrics without increasing company-level productivity. The work moved faster in some respects, but review burden, rework rates, and coordination overhead absorbed most of the gain. PR review time on high-AI-adoption teams increased 91 percent.
+
+These findings do not mean AI tools are useless. The top 20 percent of developers in those studies did see genuine 16 to 30 percent productivity improvements. For bounded, well-specified tasks with clear success criteria, AI agents deliver real value. The problem is that the tasks companies most want to replace humans on are the complex, ambiguous, multi-dependency tasks. Those are structurally the highest token consumers and the lowest reliability outputs.
+
+---
+
+## The Full Cost Stack
+
+The token API bill is one line item. A production AI agent system in 2026 carries a broader cost structure:
+
+| Cost Layer | Monthly Estimate |
 |---|---|
-| LLM API tokens | \$3,200 – \$13,000 |
-| Infrastructure (compute, storage, queues) | \$800 – \$2,500 |
-| Monitoring & observability tooling | \$400 – \$1,200 |
-| Human oversight / review labor | \$2,000 – \$8,000 |
-| Security, compliance, incident response | \$500 – \$2,000 |
-| Model fine-tuning / prompt engineering | \$1,000 – \$4,000 |
-| **Total** | **\$7,900 – \$30,700 / month** |
+| LLM API tokens | \$3,200 to \$13,000 |
+| Infrastructure (compute, storage, queues) | \$800 to \$2,500 |
+| Monitoring and observability | \$400 to \$1,200 |
+| Human oversight and review labor | \$2,000 to \$8,000 |
+| Security, compliance, incident response | \$500 to \$2,000 |
+| Model tuning and prompt engineering | \$1,000 to \$4,000 |
+| **Total** | **\$7,900 to \$30,700 / month** |
 
-That top-end figure is \$368,000 per year — more than two senior engineers in most US markets, and considerably more than what you'd pay a team of two in Eastern Europe or South Asia.
+The high end of that range is \$368,000 annually. That is more than two senior engineers in most US markets, and more than what you would budget for a team of two offshore. A 2026 enterprise study found AI is cheaper than humans in only 23 percent of tasks, compared to estimates as high as 80 percent that circulated in 2023. The tasks where AI wins remain narrow: high-volume, low-judgment, clearly specified, with no tolerance for ambiguity.
 
-A 2026 study measuring AI cost-effectiveness across real enterprise deployments found that **AI is now cheaper than humans in only 23% of tasks** — down from estimates as high as 80% that were circulating in 2023. The tasks where AI wins are narrow: high-volume, low-judgment, highly repetitive, with clear success criteria and minimal ambiguity. The other 77% are more expensive, slower, or both.
-
----
-
-## The Ironic Resurrection
-
-Here's where the story gets strange.
-
-In 2023 and 2024, tech layoffs were brutal and explicit. Companies announced they were reducing headcount in anticipation of AI-driven productivity gains. Goldman Sachs estimated 300 million jobs globally at risk. The narrative was clean: capital defeats labor, tokens replace time.
-
-What actually happened is messier. Companies that laid off engineering teams discovered that the agentic pipelines meant to replace them required:
-
-- **Human prompt engineers** to design and maintain the task specifications
-- **Human reviewers** to catch the 15–30% error rate on non-trivial output
-- **Human architects** to design the systems the agents operate within
-- **Human escalation paths** for the edge cases that agents handle catastrophically
-
-Some of these roles pay *more* than the roles they replaced. An "AI systems engineer" or "agent reliability engineer" — someone who keeps agentic pipelines running, monitors costs, and handles failure modes — commands a premium precisely because of how scarce the skill set is.
-
-Meanwhile, for companies that never over-automated, a funny thing happened: **skilled human engineers became more valuable**, not less. The developers who can work fluidly alongside AI tooling — using it for the 23% of tasks where it genuinely accelerates output, and not reaching for it when it creates more overhead than it saves — are now the most productive individuals in their field, and the labor market is starting to price that accordingly.
-
-Tom's Hardware summarized this cleanly in a recent piece: *"Efficient workers might be the solution to strained budgets."* Not the absence of AI — the presence of people who use it well.
+Uber's CTO reportedly exhausted his entire 2026 AI budget ahead of schedule due to token costs. A software engineer in Stockholm told the New York Times he was spending more on Claude tokens than his own salary. Morgan Stanley tracked Big Tech AI capital expenditures at \$740 billion in 2026, a 69 percent increase over 2025, while over 80 percent of companies using AI in one study showed no measurable productivity benefit.
 
 ---
 
-## Projecting the Cost Curve
+## The Ironic Part
 
-Token prices will continue to fall. That part of the original thesis isn't wrong — just delayed and non-linear. Hardware improvements, inference optimization, and competitive pressure from open-source models will keep squeezing the per-token cost.
+Here is what I find genuinely interesting about where this has landed. The companies that ran hard at full-scale AI replacement of engineering teams are now running into a version of the problem they were trying to solve. The agentic pipelines they built to replace engineers require human prompt engineers to maintain task specifications, human reviewers to catch the 15 to 30 percent error rate on complex output, human architects to design the systems agents operate within, and human engineers to handle the failure modes agents produce at scale. Some of those roles pay more than the positions they nominally replaced because the skill set is new and scarce.
 
-But two countervailing forces are likely to prevent tokens from becoming economically trivial:
+Tom's Hardware summarized it well in a recent piece: "Efficient workers might be the solution to strained budgets." The same publication that covers GPU releases wrote that companies burning through AI budgets might have been better served by retaining skilled humans who could do the work reliably without the infrastructure overhead.
 
-**1. Demand grows faster than price drops.** As models get cheaper, usage expands — both in breadth (more use cases) and depth (more tokens per use case). This is the classic Jevons Paradox: efficiency improvements in resource consumption tend to increase total resource consumption, not decrease it. Every time token prices drop 50%, agentic applications find ways to burn twice as many.
-
-**2. The complexity ceiling.** The tasks that remain for AI to tackle — the ones that would genuinely replace expensive human judgment — are the tasks that require the most context, the longest chains of reasoning, and the most validation loops. These are structurally the most token-intensive tasks in the queue. Cheaper tokens don't help if the task requires ten times more of them.
-
-The 2027 projection on the chart above assumes token prices continue declining on the infrastructure side, but that real-world agent deployments targeting complex engineering work consume tokens at a rate that keeps effective weekly costs above the crossover point with human compensation.
-
-If that projection holds, the economics of AI-as-labor-replacement look roughly like this:
-
-- **Narrow, repetitive tasks**: AI wins decisively, permanently
-- **Mid-complexity, bounded tasks**: AI wins on cost but requires meaningful human oversight; net savings 30–50%
-- **Complex, ambiguous, multi-dependency work**: Humans remain cheaper or comparably priced, with substantially higher reliability
-
-That middle tier is where the interesting hiring decisions are being made right now.
+This is not a novel pattern in economic history. The loom displaced hand-weavers and created demand for factory workers, mechanics, and engineers. Automotive assembly automation eliminated manual line jobs and created machinist, programmer, and QA roles that paid more. AI is moving through a similar cycle but faster. The displacement is happening. So is the creation of new roles for people who understand how to govern the systems doing the displacing.
 
 ---
 
-## What This Means If You're Building a Career
+## What This Means for the Cost Curve Going Forward
 
-The labor market implications depend heavily on which tier of work you're positioned in.
+Token prices will keep falling. Hardware improvements, inference optimization, and open-source competition will continue pushing per-token costs down. That part of the original argument was not wrong, just early.
 
-If you are doing work that is high-volume, rule-based, and precisely specifiable — data entry, boilerplate code generation, templated content creation, routine QA — the economics of AI replacement are already compelling and will only improve. That work is gone or going.
+The complication is the Jevons Paradox. As resources get cheaper, consumption increases. Every time inference costs drop by half, the practical deployments of AI agents expand to fill the space, and they burn tokens at a rate that preserves or increases total cost. The tasks that remain most valuable to automate are the ones that require the most context and the longest reasoning chains, which are structurally the most expensive to run.
 
-If you are doing work that requires judgment, contextual reasoning, relationship management, or accountability for outcomes — senior engineering, architecture, product strategy, security, anything where "it looked fine to the model" is not an acceptable failure mode — you are likely to see your value increase, not decrease. The leverage AI provides to people in this tier is enormous, and the cost of replacing those people with agents is now empirically demonstrated to be higher than most companies budgeted for.
+The 2027 projection in the chart reflects this: token unit prices continue declining, but real-world agent deployments targeting meaningful engineering work consume tokens at a volume that keeps effective weekly costs at or above the crossover point with human compensation.
 
-The most durable position is neither "I refuse to use AI" nor "AI can handle everything." It's developing the judgment to know which 23% of tasks to hand off and which 77% to own — and being fast enough at both that you're cheaper than a poorly-supervised agent pipeline.
+Based on current trajectories, the economics break down roughly as follows:
 
-That skill set, ironically, is now scarce.
-
----
-
-## The Broader Pattern
-
-None of this is particularly new in economic history. New technology consistently displaces specific categories of labor while simultaneously creating demand for labor that can govern, maintain, and extend the technology. The loom displaced hand-weavers and created demand for factory workers, engineers, and mechanics. Automation in manufacturing eliminated assembly-line jobs and created machinist, programmer, and quality-assurance roles that paid more.
-
-AI is following a similar arc, but compressed into years rather than decades. The displacement is real. The creation is also real. The irony is that the overcorrection — the mass layoffs, the aggressive replacement timelines, the budget miscalculations — has, in some corners of the market, already reversed course. Companies are quietly hiring back the engineers they displaced or discovering that the contractors they retained are now load-bearing in ways they didn't anticipate.
-
-Whether that's a permanent structural shift or a temporary correction while models improve is genuinely unclear. The 2028 model landscape might change the math again. But right now, in May 2026, the headline is not "AI made human engineers obsolete."
-
-The headline is closer to: **"We spent a lot of money finding out that's harder than it looked."**
-
-And the engineers who survived the first wave — who understand both the capability and the cost — are in a position that would have been difficult to predict from the vantage point of 2023.
+- Narrow, repetitive, high-volume tasks: AI wins and will continue to win
+- Bounded tasks with clear success criteria: AI wins on cost with meaningful human oversight, net savings 30 to 50 percent
+- Complex, ambiguous, multi-dependency work: humans are comparably priced or cheaper, with substantially higher reliability
 
 ---
 
-*Isaiah Byrdsong is a cybersecurity and IT professional with a background in intelligence analysis, network security, and AI-assisted systems. The projections in this post represent the author's synthesis of current publicly available data and do not constitute financial or investment advice.*
+## What I Take From This
+
+I am in a cybersecurity and IT track, not pure software development, but the dynamics apply. The roles most at risk in technical fields are the ones that look like predictable, repeatable input-output functions. The roles with the most durability are the ones that require judgment, accountability, and the ability to reason across domains when the situation does not match the training data.
+
+The practical edge I am trying to build is not in knowing how to use AI tools, which is table stakes at this point. It is in knowing when to use them and when the token cost and review burden make it cheaper and faster to do the work directly. That judgment, based on everything I have looked at, is not something agents are particularly good at yet.
+
+The engineers who understood how to use AI tools well before they were commodified are now the most productive people in the field. Whether that advantage persists as tooling matures is an open question. For now, I think the most defensible position is the one where you are useful regardless of what the token price is.
+
+---
+
+*Sources: BLS Occupational Outlook 2026, Glassdoor Software Engineer Salary Report (May 2026), Levels.fyi, Anthropic/OpenAI/Google official API pricing (May 2026), TLDL.io LLM Pricing Tracker, METR Developer Productivity Study (2025), Faros.ai AI Productivity Paradox Report, Retool Engineering Blog on AI agent pricing, Futurism.com and Axios reporting on enterprise AI costs, Tom's Hardware "Talent Over Tokens" (2026), Morgan Stanley AI capex analysis (2026).*
