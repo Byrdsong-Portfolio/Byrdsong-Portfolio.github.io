@@ -8,14 +8,13 @@ tags:
   - Software Engineering
   - Labor
   - Machine Learning
-image:
-  caption: 'Cost per engineer-week: human total compensation vs. real-world AI agent token burn, 2023 to 2027'
-  focal_point: 'Center'
 ---
 
 I have been following the AI-replaces-developers conversation since it picked up steam in 2023, mostly because it directly affects the field I am building a career in. The claim was straightforward: token costs are so low that routing work through an LLM API is cheaper than paying a human to do it. On paper, that argument was hard to refute. In practice, 2025 and 2026 have started to complicate it in ways worth examining.
 
 This post walks through the actual cost comparison, where the early numbers went wrong, and what I think the current trajectory means for people in technical roles.
+
+<iframe src="/charts/token-paradox.html" width="100%" height="980" style="border:none;display:block;margin:2rem 0;border-radius:4px;overflow:hidden;" title="The Token Paradox — AI agent token costs vs. software engineer weekly compensation, 2023–2027" loading="lazy"></iframe>
 
 ---
 
