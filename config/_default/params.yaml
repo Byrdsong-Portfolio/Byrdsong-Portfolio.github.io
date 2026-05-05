@@ -28,7 +28,7 @@ hugoblox:
     theme_toggle: true
     cta:
       enable: true
-      text: Check out my Linkedln as well!
+      text: Connect with me on LinkedIn
       url: https://www.linkedin.com/in/ibyrdsong/
   footer:
     style: minimal

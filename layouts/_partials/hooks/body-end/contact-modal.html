@@ -1,0 +1,259 @@
+<!-- Contact Form Modal -->
+<style>
+  #contact-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.65);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  #contact-modal.open { display: flex; }
+
+  .cm-box {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    position: relative;
+    animation: cmSlideIn 0.2s ease;
+  }
+  .dark .cm-box {
+    background: #1e293b;
+    color: #f1f5f9;
+  }
+  @keyframes cmSlideIn {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .cm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+  .cm-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .cm-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: #64748b;
+    padding: 0.25rem;
+  }
+  .cm-close:hover { color: #0f172a; }
+  .dark .cm-close:hover { color: #f1f5f9; }
+
+  .cm-field { margin-bottom: 0.9rem; }
+  .cm-field label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .dark .cm-field label { color: #94a3b8; }
+
+  .cm-field input,
+  .cm-field textarea {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.9rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.4rem;
+    background: #f8fafc;
+    color: #0f172a;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+    font-family: inherit;
+  }
+  .dark .cm-field input,
+  .dark .cm-field textarea {
+    background: #0f172a;
+    border-color: #334155;
+    color: #f1f5f9;
+  }
+  .cm-field input:focus,
+  .cm-field textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+  }
+  .cm-field input[readonly] {
+    background: #f1f5f9;
+    color: #64748b;
+    cursor: default;
+  }
+  .dark .cm-field input[readonly] {
+    background: #1e293b;
+    color: #64748b;
+  }
+  .cm-field textarea { resize: vertical; min-height: 110px; }
+
+  .cm-actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+  }
+  .cm-btn-send {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    background: #6366f1;
+    color: #fff;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .cm-btn-send:hover { background: #4f46e5; }
+  .cm-btn-cancel {
+    padding: 0.6rem 1rem;
+    background: transparent;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: inherit;
+    transition: background 0.15s;
+  }
+  .cm-btn-cancel:hover { background: #f1f5f9; }
+  .dark .cm-btn-cancel:hover { background: #0f172a; }
+
+  .cm-success {
+    text-align: center;
+    padding: 1.5rem 0 0.5rem;
+    display: none;
+  }
+  .cm-success-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .cm-success p { color: #475569; margin: 0; font-size: 0.95rem; }
+  .dark .cm-success p { color: #94a3b8; }
+</style>
+
+<div id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+  <div class="cm-box">
+    <div class="cm-header">
+      <h2 class="cm-title" id="cm-title">Send a Message</h2>
+      <button class="cm-close" id="cm-close" aria-label="Close">✕</button>
+    </div>
+
+    <form id="cm-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display:none"><label>Skip: <input name="bot-field"></label></p>
+
+      <div class="cm-field">
+        <label>To</label>
+        <input type="text" value="isaiah.bsong@gmail.com" readonly tabindex="-1">
+      </div>
+
+      <div class="cm-field">
+        <label for="cm-subject">Subject</label>
+        <input type="text" id="cm-subject" name="subject" value="Portfolio Inquiry">
+      </div>
+
+      <div class="cm-field">
+        <label for="cm-name">Your Name <span style="color:#ef4444">*</span></label>
+        <input type="text" id="cm-name" name="name" placeholder="Jane Smith" required>
+      </div>
+
+      <div class="cm-field">
+        <label for="cm-email">Your Email <span style="color:#ef4444">*</span></label>
+        <input type="email" id="cm-email" name="email" placeholder="jane@example.com" required>
+      </div>
+
+      <div class="cm-field">
+        <label for="cm-message">Message <span style="color:#ef4444">*</span></label>
+        <textarea id="cm-message" name="message" placeholder="Write your message here…" required></textarea>
+      </div>
+
+      <div class="cm-actions">
+        <button type="submit" class="cm-btn-send">Send Message</button>
+        <button type="button" class="cm-btn-cancel" id="cm-cancel">Cancel</button>
+      </div>
+    </form>
+
+    <div class="cm-success" id="cm-success">
+      <div class="cm-success-icon">✅</div>
+      <h3 style="margin:0 0 0.4rem">Message sent!</h3>
+      <p>Thanks for reaching out. I'll get back to you soon.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const modal   = document.getElementById('contact-modal');
+  const form    = document.getElementById('cm-form');
+  const success = document.getElementById('cm-success');
+
+  function openModal(e) {
+    if (e) e.preventDefault();
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('cm-name').focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Intercept any link pointing to #contact-form
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a[href="#contact-form"]');
+    if (link) openModal(e);
+  });
+
+  document.getElementById('cm-close').addEventListener('click', closeModal);
+  document.getElementById('cm-cancel').addEventListener('click', closeModal);
+
+  // Close on backdrop click
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  // Handle Netlify form submit via fetch so we can show inline success
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    fetch('/', { method: 'POST', body: data })
+      .then(function () {
+        form.style.display = 'none';
+        success.style.display = 'block';
+        setTimeout(function () {
+          closeModal();
+          setTimeout(function () {
+            form.reset();
+            form.style.display = '';
+            success.style.display = 'none';
+          }, 400);
+        }, 2800);
+      })
+      .catch(function () {
+        // Fallback: let Netlify handle the redirect normally
+        form.submit();
+      });
+  });
+
+  // Open if page loads with #contact-form hash
+  if (window.location.hash === '#contact-form') openModal();
+})();
+</script>

@@ -18,7 +18,7 @@ affiliations:
     url: "https://www.angelo.edu/"
 links:
   - icon: "hero/at-symbol"
-    url: "Isaiahbsong@gmail.com"
+    url: "#contact-form"
     label: "Email"
   - icon: "brands/github"
     url: "https://github.com/Byrdsong-Portfolio"
