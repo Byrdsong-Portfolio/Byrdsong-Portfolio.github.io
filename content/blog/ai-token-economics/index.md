@@ -52,17 +52,7 @@ These findings do not mean AI tools are useless. The top 20 percent of developer
 
 ## The Full Cost Stack
 
-The token API bill is one line item. A production AI agent system in 2026 carries a broader cost structure:
-
-| Cost Layer | Monthly Estimate |
-|---|---|
-| LLM API tokens | \$3,200 to \$13,000 |
-| Infrastructure (compute, storage, queues) | \$800 to \$2,500 |
-| Monitoring and observability | \$400 to \$1,200 |
-| Human oversight and review labor | \$2,000 to \$8,000 |
-| Security, compliance, incident response | \$500 to \$2,000 |
-| Model tuning and prompt engineering | \$1,000 to \$4,000 |
-| **Total** | **\$7,900 to \$30,700 / month** |
+The token API bill is one line item. A production AI agent system in 2026 carries a broader cost structure. The full breakdown runs from \$3,200 to \$13,000 per month in LLM API tokens alone, plus infrastructure, monitoring, human oversight and review labor, security and compliance, and model tuning — stacking to a total range of \$7,900 to \$30,700 per month depending on scale and task complexity.
 
 The high end of that range is \$368,000 annually. That is more than two senior engineers in most US markets, and more than what you would budget for a team of two offshore. A 2026 enterprise study found AI is cheaper than humans in only 23 percent of tasks, compared to estimates as high as 80 percent that circulated in 2023. The tasks where AI wins remain narrow: high-volume, low-judgment, clearly specified, with no tolerance for ambiguity.
 
@@ -105,5 +95,3 @@ The practical edge I am trying to build is not in knowing how to use AI tools, w
 The engineers who understood how to use AI tools well before they were commodified are now the most productive people in the field. Whether that advantage persists as tooling matures is an open question. For now, I think the most defensible position is the one where you are useful regardless of what the token price is.
 
 ---
-
-*Sources: BLS Occupational Outlook 2026, Glassdoor Software Engineer Salary Report (May 2026), Levels.fyi, Anthropic/OpenAI/Google official API pricing (May 2026), TLDL.io LLM Pricing Tracker, METR Developer Productivity Study (2025), Faros.ai AI Productivity Paradox Report, Retool Engineering Blog on AI agent pricing, Futurism.com and Axios reporting on enterprise AI costs, Tom's Hardware "Talent Over Tokens" (2026), Morgan Stanley AI capex analysis (2026).*
