@@ -8,6 +8,8 @@ tags:
   - Software Engineering
   - Labor
   - Machine Learning
+image:
+  preview_only: true
 ---
 
 I have been following the AI-replaces-developers conversation since it picked up steam in 2023, mostly because it directly affects the field I am building a career in. The claim was straightforward: token costs are so low that routing work through an LLM API is cheaper than paying a human to do it. On paper, that argument was hard to refute. In practice, 2025 and 2026 have started to complicate it in ways worth examining.
