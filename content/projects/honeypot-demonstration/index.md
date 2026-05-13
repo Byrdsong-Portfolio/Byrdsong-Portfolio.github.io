@@ -20,7 +20,7 @@ links:
     icon: fas fa-external-link-alt
 ---
 
-{{< cta cta_text="View Full Showcase" cta_link="/honeypot/preview.html" >}}
+**[View Full Showcase →](/honeypot/preview.html)**
 
 ---
 
