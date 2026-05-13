@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HoneyNet — Multi-Service Threat Intelligence Suite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0e1a;
+      --surface:   #111827;
+      --border:    #1e2d45;
+      --green:     #00ff88;
+      --green-dim: #00cc6a;
+      --amber:     #f59e0b;
+      --blue:      #38bdf8;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --card-bg:   #0d1526;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      min-height: 100vh;
+      padding: 48px 24px 64px;
+    }
+
+    /* ── Header ───────────────────────────────────────────────────────── */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header__eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .header__title {
+      font-size: clamp(22px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .header__title span { color: var(--green); }
+
+    .header__subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    /* ── Metrics bar ──────────────────────────────────────────────────── */
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      max-width: 860px;
+      margin: 0 auto 48px;
+      background: var(--surface);
+    }
+
+    .metric {
+      flex: 1 1 200px;
+      padding: 14px 20px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .metric:last-child { border-right: none; }
+
+    .metric__label {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .metric__value {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    /* ── Image grid ───────────────────────────────────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--green-dim);
+      transform: translateY(-3px);
+    }
+
+    .card__image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Simulated terminal scanlines */
+    .card__image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,255,136,0.02) 2px,
+        rgba(0,255,136,0.02) 4px
+      );
+      pointer-events: none;
+    }
+
+    .card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card__placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .card__placeholder-icon {
+      width: 56px;
+      height: 56px;
+      border: 2px solid var(--green-dim);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--green-dim);
+      opacity: 0.6;
+    }
+
+    .card__placeholder-filename {
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0.7;
+    }
+
+    .card__body {
+      padding: 16px 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .card__label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .card__filename {
+      font-size: 10px;
+      color: var(--green-dim);
+    }
+
+    /* ── Footer ───────────────────────────────────────────────────────── */
+    .footer {
+      text-align: center;
+      margin-top: 56px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .footer a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <p class="header__eyebrow">Cybersecurity Portfolio Project</p>
+    <h1 class="header__title"><span>HoneyNet</span> — Multi-Service Threat Intelligence Suite</h1>
+    <p class="header__subtitle">SSH &nbsp;·&nbsp; HTTP &nbsp;·&nbsp; MySQL &nbsp;|&nbsp; Cloud VPS &nbsp;|&nbsp; Real Attacker Data</p>
+  </header>
+
+  <!-- Metrics bar -->
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric__label">Services</div>
+      <div class="metric__value">3</div>
+    </div>
+    <div class="metric">
+      <div class="metric__label">Protocols Monitored</div>
+      <div class="metric__value">SSH / HTTP / MySQL</div>
+    </div>
+    <div class="metric">
+      <div class="metric__label">Alert System</div>
+      <div class="metric__value">Discord</div>
+    </div>
+    <div class="metric">
+      <div class="metric__label">Storage</div>
+      <div class="metric__value">SQLite + JSONL</div>
+    </div>
+  </div>
+
+  <!-- Screenshot cards -->
+  <div class="grid">
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card__image">
+        <div class="card__placeholder">
+          <div class="card__placeholder-icon">📊</div>
+          <span class="card__placeholder-filename">dashboard_live.png</span>
+        </div>
+      </div>
+      <div class="card__body">
+        <div class="card__label">Threat Intelligence Dashboard — Live Capture</div>
+        <div class="card__filename">dashboard_live.png</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card__image">
+        <div class="card__placeholder">
+          <div class="card__placeholder-icon">🔐</div>
+          <span class="card__placeholder-filename">fake_portal.png</span>
+        </div>
+      </div>
+      <div class="card__body">
+        <div class="card__label">Credential Honeypot Portal</div>
+        <div class="card__filename">fake_portal.png</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card__image">
+        <div class="card__placeholder">
+          <div class="card__placeholder-icon">🖥</div>
+          <span class="card__placeholder-filename">dashboard_blank.png</span>
+        </div>
+      </div>
+      <div class="card__body">
+        <div class="card__label">Dashboard Template — Blank State</div>
+        <div class="card__filename">dashboard_blank.png</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    Built by <a href="https://www.linkedin.com/in/ibyrdsong/" target="_blank" rel="noopener">Isaiah Byrdsong</a>
+    &nbsp;·&nbsp; Cybersecurity &amp; Intelligence Professional
+    &nbsp;·&nbsp; <a href="https://github.com/Byrdsong-Portfolio/honeynet-threat-intel" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+</body>
+</html>

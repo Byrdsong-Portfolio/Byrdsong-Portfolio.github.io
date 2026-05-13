@@ -1,26 +1,8 @@
----
-title: "HoneyNet — Multi-Service Threat Intelligence Suite"
-date: 2026-04-25
-draft: false
-summary: A production honeynet deployed on a public cloud VPS capturing real-world opportunistic attack traffic across SSH, HTTP, and MySQL, with live Discord alerting, geo-IP enrichment, and a real-time analytics dashboard.
-tags:
-  - Cybersecurity
-  - Python
-  - Flask
-  - Paramiko
-  - SQLite
-  - DigitalOcean
-  - Threat Intelligence
-links:
-  - name: GitHub
-    url: https://github.com/Byrdsong-Portfolio/honeynet-threat-intel
-    icon: fab fa-github
-  - name: Live Demo
-    url: http://159.223.96.117
-    icon: fas fa-external-link-alt
----
-
-{{< cta cta_text="View Full Showcase" cta_link="/honeypot/preview.html" >}}
+# Threat Intelligence Report: HoneyNet Deployment
+**Classification:** Public Portfolio · Sanitized  
+**Author:** Isaiah Byrdsong  
+**Platform:** DigitalOcean VPS · Ubuntu 22.04  
+**Observation Period:** 30-day continuous deployment  
 
 ---
 
@@ -60,7 +42,7 @@ Every inbound connection was logged to:
 - A per-service **JSONL flat file** (`logs/{service}_events.jsonl`) for line-by-line streaming analysis
 - A shared **SQLite database** (`logs/honeynet.db`) for aggregate queries and dashboard rendering
 
-IP geolocation used the ip-api.com free tier (45 req/min) with an in-process LRU cache to avoid redundant lookups.
+IP geolocation used the [ip-api.com](http://ip-api.com) free tier (45 req/min) with an in-process LRU cache to avoid redundant lookups.
 
 Discord webhooks delivered real-time alerts for every hit via a synchronous HTTP POST — no cooldown, no queuing, ensuring zero missed events.
 

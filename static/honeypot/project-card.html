@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HoneyNet — Project Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0e1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    .card {
+      background: #111827;
+      border: 1px solid #1e2d45;
+      border-radius: 10px;
+      width: 340px;
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: #00cc6a;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 255, 136, 0.08);
+    }
+
+    /* Top accent bar */
+    .card__accent {
+      height: 3px;
+      background: linear-gradient(90deg, #00ff88, #38bdf8, #f59e0b);
+    }
+
+    .card__body {
+      padding: 22px 22px 18px;
+    }
+
+    .card__eyebrow {
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #00cc6a;
+      margin-bottom: 8px;
+    }
+
+    .card__title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .card__title span { color: #00ff88; }
+
+    .card__desc {
+      font-size: 11px;
+      color: #94a3b8;
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    /* Tech stack tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 3px 8px;
+      border-radius: 3px;
+      border: 1px solid;
+    }
+
+    .tag--green  { color: #00ff88; border-color: #00ff8840; background: #00ff8810; }
+    .tag--blue   { color: #38bdf8; border-color: #38bdf840; background: #38bdf810; }
+    .tag--amber  { color: #f59e0b; border-color: #f59e0b40; background: #f59e0b10; }
+    .tag--purple { color: #a78bfa; border-color: #a78bfa40; background: #a78bfa10; }
+
+    /* Links */
+    .card__links {
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid #1e2d45;
+      padding-top: 16px;
+    }
+
+    .link-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      border: 1px solid #1e2d45;
+      color: #64748b;
+      cursor: pointer;
+    }
+
+    .link-btn--github {
+      background: #0d1526;
+    }
+
+    .link-btn--github:hover {
+      background: #1e2d45;
+      color: #e2e8f0;
+      border-color: #2d4060;
+    }
+
+    .link-btn--demo {
+      background: #00ff8810;
+      border-color: #00ff8830;
+      color: #00cc6a;
+    }
+
+    .link-btn--demo:hover {
+      background: #00ff8820;
+      border-color: #00cc6a;
+      color: #00ff88;
+    }
+
+    .link-btn__icon { font-size: 12px; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="card__accent"></div>
+    <div class="card__body">
+
+      <div class="card__eyebrow">Cybersecurity · Threat Intelligence</div>
+
+      <h2 class="card__title"><span>HoneyNet</span> Suite</h2>
+
+      <p class="card__desc">
+        Production honeynet capturing real attackers across SSH, HTTP &amp; MySQL.
+        Live Discord alerting, geo-IP resolution, and a Chart.js analytics dashboard
+        fed by a shared SQLite event store.
+      </p>
+
+      <div class="tags">
+        <span class="tag tag--green">Python</span>
+        <span class="tag tag--green">Flask</span>
+        <span class="tag tag--blue">Paramiko</span>
+        <span class="tag tag--blue">SQLite</span>
+        <span class="tag tag--amber">Discord API</span>
+        <span class="tag tag--purple">DigitalOcean</span>
+      </div>
+
+      <div class="card__links">
+        <a href="https://github.com/Byrdsong-Portfolio/honeynet-threat-intel" target="_blank" rel="noopener" class="link-btn link-btn--github">
+          <span class="link-btn__icon">⌥</span> GitHub
+        </a>
+        <a href="http://159.223.96.117" target="_blank" rel="noopener" class="link-btn link-btn--demo">
+          <span class="link-btn__icon">▶</span> Live Demo
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
